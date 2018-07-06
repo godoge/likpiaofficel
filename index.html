@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen" type="text/css">
+    .music-card {}
+
+    .card-container span {
+      box-shadow: 1px 1px 10px #888888;
+      display: inline-block;
+      text-decoration: none;
+      width: 200px;
+      text-align: center;
+      background-image: url("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1674750751,1398518578&fm=27&gp=0.jpg");
+      height: 200px;
+    }
+
+    .card-container {
+      text-align: center;
+    }
+
+    .card-container span img {
+      cursor: pointer;
+      width: 80px;
+      height: 80px;
+      top: 60px;
+      position: relative;
+      margin: auto;
+    }
+
+    .card-container span:hover {
+      box-shadow: 1px 1px 20px #888888;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <h1>LIKPIA的个人网站</h1>
+  <hr>
+  <div id="app" class="all-card">
+    <div class="card-container">
+      <span>
+      <img v-on:click="play()" v-bind:src="playSrc" alt="">
+    </span>
+    </div>
+  </div>
+  <audio id="audio" src="http://m10.music.126.net/20180706202415/e559ef6a8a6ac696a0282618d1528642/ymusic/e03b/9ad0/7b03/d5fb8df4467545fb13084fd5c054dd9d.mp3">
+</audio>
+</body>
+
+<script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    methods: {
+      play: function() {
+        var audio = document.getElementById('audio');
+
+        if (audio.paused) {
+          app.playSrc = "res/pause.png";
+          audio.play()
+        } else {
+          app.playSrc = "res/play.png";
+          audio.pause();
+        }
+
+      }
+
+    },
+    data: {
+      message: 'Hello Vue!',
+      playSrc: 'res/play.png'
+    }
+  });
+</script>
+
+</html>
