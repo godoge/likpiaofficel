@@ -7,7 +7,7 @@
   <style media="screen" type="text/css">
     .music-card {}
 
-    .card-container span {
+    .line-card span {
       box-shadow: 1px 1px 10px #888888;
       display: inline-block;
       text-decoration: none;
@@ -17,11 +17,11 @@
       height: 200px;
     }
 
-    .card-container {
+    .line-card {
       text-align: center;
     }
 
-    .card-container span img {
+    .line-card span img {
       cursor: pointer;
       width: 80px;
       height: 80px;
@@ -30,18 +30,19 @@
       margin: auto;
     }
 
-    .card-container span:hover {
+    .line-card span:hover {
       box-shadow: 1px 1px 20px #888888;
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" charset="utf-8"></script>
+  <link rel="prefetch" href="res/pause.png" />
 </head>
 
 <body>
   <h1>LIKPIA的个人网站</h1>
   <hr>
   <div id="app" class="all-card">
-    <div class="card-container">
+    <div class="line-card">
       <span>
       <img v-on:click="play()" v-bind:src="playSrc" alt="">
     </span>
