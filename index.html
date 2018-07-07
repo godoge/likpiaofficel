@@ -61,11 +61,16 @@
       text-align: right;
     }
 
+    #canvas {
+      position: fixed;
+      z-index: -1;
+    }
+
     .line-card span:hover {
       box-shadow: 1px 1px 20px #888888;
     }
 
-  
+
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" charset="utf-8"></script>
@@ -73,6 +78,8 @@
 </head>
 
 <body>
+  <canvas id="canvas"></canvas>
+  <script src="res/up.js" charset="utf-8"></script>
   <h1>LIKPIA的小站</h1>
   <hr>
   <div id="app">
@@ -95,23 +102,34 @@
   </div>
   <audio id="audio" src="https://likpia.oss-cn-beijing.aliyuncs.com/likpia/July.mp3?spm=5176.8466032.bucket-object.dopenurl.4f2f1450RxA9Se&file=July.mp3">
 </audio>
+
 </body>
 
 <script type="text/javascript">
+  window.onload = function() {
+    startUp();
+    var audio = document.getElementById('audio');
+    audio.onplay = function() {
+      isStart = true;
+      app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/pause.png")';
+    }
+    audio.onpause = function() {
+      isStart = false;
+      app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/play.png")';
+    }
+
+  }
   var app = new Vue({
     el: '#app',
     methods: {
       play: function() {
         var audio = document.getElementById('audio');
-
         if (audio.paused) {
-
           audio.play();
-          app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/pause.png")';
-        } else {
 
+        } else {
           audio.pause();
-          app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/play.png")';
+
         }
 
       }
