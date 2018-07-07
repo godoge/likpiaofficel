@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
 
   <title></title>
   <style media="screen" type="text/css">
@@ -17,12 +17,19 @@
       text-decoration: none;
       width: 200px;
       text-align: center;
-      background-image: url("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1674750751,1398518578&fm=27&gp=0.jpg");
+      background-size: cover;
+      background-image: url("http://imgm.cnmo-img.com.cn/appimg/screenpic/middle/594/593494.jpg");
       height: 200px;
     }
 
     .line-card {
       text-align: center;
+    }
+
+    .card-container {
+          margin-top: 20px;
+
+
     }
 
     .line-card span button {
@@ -31,8 +38,9 @@
       height: 80px;
       text-decoration: none;
       border: none;
+      outline: none;
+      background-size: cover;
       background-color: transparent;
-      background-image: url("res/play.png");
       top: 60px;
       position: relative;
       margin: auto;
@@ -48,13 +56,18 @@
 </head>
 
 <body>
-  <h1>LIKPIA - 个人小站</h1>
+  <h1>LIKPIA的小站</h1>
   <hr>
-  <div id="app" class="all-card">
-    <div class="line-card">
-      <span>
-      <button v-on:click="play()" alt="">
-    </span>
+  <div id="app">
+    <div class="card-container">
+      <div class="line-card">
+        <span>
+        <button v-bind:style="{backgroundImage:playSrc}" v-on:click="play()" alt="">
+      </span>
+      </div>
+    </div>
+    <div style="text-align: center">
+      <h2>那些难忘的夏天，留下了许多珍贵的记忆。</h2>
     </div>
   </div>
   <audio id="audio" src="https://likpia.oss-cn-beijing.aliyuncs.com/likpia/July.mp3?spm=5176.8466032.bucket-object.dopenurl.4f2f1450RxA9Se&file=July.mp3">
@@ -69,11 +82,13 @@
         var audio = document.getElementById('audio');
 
         if (audio.paused) {
-          app.playSrc = "res/pause.png";
-          audio.play()
+
+          audio.play();
+          app.playSrc = 'url("res/pause.png")';
         } else {
-          app.playSrc = "res/play.png";
+
           audio.pause();
+          app.playSrc = 'url("res/play.png")';
         }
 
       }
@@ -81,7 +96,7 @@
     },
     data: {
       message: 'Hello Vue!',
-      playSrc: 'res/play.png'
+      playSrc: 'url("res/play.png")'
     }
   });
 </script>
