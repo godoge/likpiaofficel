@@ -43,7 +43,7 @@
       background-color: transparent;
       top: 60px;
       position: relative;
-      margin: auto;
+
     }
 
     #desc-div {
@@ -66,8 +66,7 @@ text-align: center;
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" charset="utf-8"></script>
-  <link rel="prefetch" href="res/pause.png" />
-  <link rel="prefetch" href="res/play.png" />
+
 </head>
 
 <body>
@@ -105,11 +104,11 @@ text-align: center;
         if (audio.paused) {
 
           audio.play();
-          app.playSrc = 'url("res/pause.png")';
+          app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/pause.png")';
         } else {
 
           audio.pause();
-          app.playSrc = 'url("res/play.png")';
+          app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/play.png")';
         }
 
       }
@@ -117,7 +116,7 @@ text-align: center;
     },
     data: {
       message: 'Hello Vue!',
-      playSrc: 'url("res/play.png")'
+      playSrc: 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/play.png")'
     }
   });
 </script>
