@@ -107,14 +107,14 @@
 
 <script type="text/javascript">
   window.onload = function() {
-    startUp();
+    initUp();
     var audio = document.getElementById('audio');
     audio.onplay = function() {
-      isStart = true;
+      startUp();
       app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/pause.png")';
     }
     audio.onpause = function() {
-      isStart = false;
+      stopUp();
       app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/play.png")';
     }
 

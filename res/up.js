@@ -57,13 +57,22 @@ function paintCircles() {
   }
 }
 
+function startUp() {
+  isStart = true;
+}
+function stopUp() {
+  isStart = false;
+}
 function stepCircles() {
   for (var i = 0; i < circles.length; i++) {
     circles[i].step()
   }
 }
 
-function startUp() {
+function initUp() {
+  for (var i = 0; i < src.length; i++) {
+    new Image().src=src[i];
+  }
   context.fillStyle = "#fff";
   createCircles();
   setInterval(function() {
