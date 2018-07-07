@@ -3,6 +3,9 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
   <title></title>
   <style media="screen" type="text/css">
     .music-card {}
@@ -21,10 +24,14 @@
       text-align: center;
     }
 
-    .line-card span img {
+    .line-card span button {
       cursor: pointer;
       width: 80px;
       height: 80px;
+      text-decoration: none;
+      border: none;
+      background-color: transparent;
+      background-image: url("res/play.png");
       top: 60px;
       position: relative;
       margin: auto;
@@ -45,7 +52,7 @@
   <div id="app" class="all-card">
     <div class="line-card">
       <span>
-      <img v-on:click="play()" v-bind:src="playSrc" alt="">
+      <button v-on:click="play()" alt="">
     </span>
     </div>
   </div>
