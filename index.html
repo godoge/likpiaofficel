@@ -67,7 +67,13 @@
     }
 
     .line-card span:hover {
+
       box-shadow: 1px 1px 20px #888888;
+    }
+
+    .cloud,.cloud:hover,.cloud:link {
+      color: gray;
+      text-decoration:underline;
     }
 
     }
@@ -78,8 +84,11 @@
 <body>
   <canvas id="canvas"></canvas>
   <script src="res/up.js" charset="utf-8"></script>
-  <h1>LIKPIA的小站</h1>
-  <hr>
+  <div>
+    <h1><a class="cloud" href="http://music.163.com/m/user/home?id=276483562">LIKPIA</a>的小站</h1>
+  </div>
+
+  <hr style="clear:left">
   <div id="app">
     <div class="card-container">
       <div class="line-card">
@@ -94,8 +103,8 @@
         <h2 class="tail">——至夏天</h2>
       </div>
     </div>
-    <div>
-    </div>
+
+
   </div>
   <audio loop="loop" id="audio" src="http://t.cn/RdK7s3r">
 </audio>
