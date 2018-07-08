@@ -71,7 +71,9 @@
       box-shadow: 1px 1px 20px #888888;
     }
 
-    .cloud,.cloud:hover,.cloud:link {
+    .cloud,
+    .cloud:hover,
+    .cloud:link {
       color: gray;
     }
 
@@ -110,8 +112,13 @@
 </body>
 
 <script type="text/javascript">
-  var pauseImgUrl = "url('http://t.cn/RdK7lxu')";
-  var playImgUrl = "url('http://t.cn/RdK7BcC')";
+  var playImg = "https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/play.png";
+  var pauseImg = "https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/pause.png";
+  var img=new Image();
+  img.src = pauseImg;
+  img.src = playImg;
+  var pauseImgUrl = "url('" + pauseImg + "')";
+  var playImgUrl = "url('" + playImg + "')";
   var app = new Vue({
     el: '#app',
     methods: {
