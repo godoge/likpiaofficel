@@ -18,7 +18,7 @@
       width: 200px;
       text-align: center;
       background-size: cover;
-      background-image: url("http://imgm.cnmo-img.com.cn/appimg/screenpic/middle/594/593494.jpg");
+      background-image: url("http://t.cn/RdKz25g");
       height: 200px;
     }
 
@@ -70,11 +70,9 @@
       box-shadow: 1px 1px 20px #888888;
     }
 
-
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" charset="utf-8"></script>
-
 </head>
 
 <body>
@@ -97,27 +95,26 @@
       </div>
     </div>
     <div>
-
     </div>
   </div>
-  <audio loop="loop" id="audio" src="https://likpia.oss-cn-beijing.aliyuncs.com/likpia/July.mp3?spm=5176.8466032.bucket-object.dopenurl.4f2f1450RxA9Se&file=July.mp3">
+  <audio loop="loop" id="audio" src="http://t.cn/RdK7s3r">
 </audio>
-
 </body>
 
 <script type="text/javascript">
+  var pauseImgUrl = "url('http://t.cn/RdK7lxu')";
+  var playImgUrl = "url('http://t.cn/RdK7BcC')";
   window.onload = function() {
     initUp();
     var audio = document.getElementById('audio');
     audio.onplay = function() {
       startUp();
-      app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/pause.png")';
+      app.playSrc = pauseImgUrl;
     }
     audio.onpause = function() {
       stopUp();
-      app.playSrc = 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/play.png")';
+      app.playSrc = playImgUrl;
     }
-
   }
   var app = new Vue({
     el: '#app',
@@ -126,18 +123,15 @@
         var audio = document.getElementById('audio');
         if (audio.paused) {
           audio.play();
-
         } else {
           audio.pause();
 
         }
-
       }
-
     },
     data: {
       message: 'Hello Vue!',
-      playSrc: 'url("https://likpia.oss-cn-beijing.aliyuncs.com/likpia/res/play.png")'
+      playSrc: playImgUrl,
     }
   });
 </script>

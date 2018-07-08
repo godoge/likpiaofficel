@@ -1,1 +1,89 @@
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('9 6=V.S("6");n.R=7(){6.p=n.M;6.k=n.H;l.A="#z"};9 l=6.Q("13");9 m=B;9 F=Y;9 h=[\'f/g-1-1.e\',\'f/g-1-2.e\',\'f/g-1-3.e\',\'f/g-1-4.e\',\'f/g-2-1.e\',\'f/g-2-2.e\',\'f/g-2-3.e\',\'f/g-2-4.e\',];6.p=n.M;6.k=n.H;7 K(){5.d=b.c()*r%10+10;5.s=b.c()+0.T;5.w=b.c()%0.8;5.x=-5.d-1;5.y=-5.d-1;5.t=u D();5.E=7(){5.x=b.c()*6.k;5.y=6.C+6.C/3*b.c();5.d=b.c()*r%10+10;5.s=b.c()+0.1;5.t.h=G();5.w=b.c()%0.8};7 G(){U h[W(b.c()*r)%h.q]}5.I=7(){l.P(5.t,5.x,5.y,5.d,5.d)};5.J=7(){v(5.y<-5.d||5.x<-5.d||5.x>6.k){v(m){5.E()}}v(m||5.y+5.d<6.p){5.y-=5.s;5.x+=-0.4+5.w}}}9 j=[];7 L(){o(9 i=0;i<F;i++){9 a=u K();j.X(a)}}7 N(){o(9 i=0;i<j.q;i++){j[i].I()}}7 Z(){m=11}7 12(){m=B}7 O(){o(9 i=0;i<j.q;i++){j[i].J()}}7 14(){o(9 i=0;i<h.q;i++){u D().h=h[i]}l.A="#z";L();15(7(){l.16(0,0,6.k,6.p);N();O()},10)}',62,69,'|||||this|canvas|function||var||Math|random|size|png|res|music|src||circles|width|context|isStart|window|for|height|length|100|yOffset|img|new|if|xOffset|||fff|fillStyle|false|offsetHeight|Image|reset|objectCount|getRandSrc|innerWidth|paint|step|Circle|createCircles|innerHeight|paintCircles|stepCircles|drawImage|getContext|onresize|getElementById|05|return|document|parseInt|push|20|startUp||true|stopUp|2d|initUp|setInterval|fillRect'.split('|'),0,{}))
+var canvas = document.getElementById("canvas");
+window.onresize = function() {
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  context.fillStyle = "#fff"
+};
+
+var context = canvas.getContext("2d");
+var isStart = false;
+var objectCount = 20;
+var src = ['res/music-1-1.png', 'res/music-1-2.png', 'res/music-1-3.png', 'res/music-1-4.png', 'res/music-2-1.png', 'res/music-2-2.png', 'res/music-2-3.png', 'res/music-2-4.png', ];
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+function Circle() {
+  this.size = Math.random() * 100 % 10 + 10;
+  this.yOffset = Math.random() + 0.05;
+  this.xOffset = Math.random() % 0.8;
+  this.x = -this.size - 1;
+  this.y = -this.size - 1;
+  this.img = new Image();
+  this.reset = function() {
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.offsetHeight + canvas.offsetHeight / 3 * Math.random();
+    this.size = Math.random() * 100 % 10 + 10;
+    this.yOffset = Math.random() + 0.1;
+    this.img.src = getRandSrc();
+    this.xOffset = Math.random() % 0.8
+  };
+
+  function getRandSrc() {
+    return src[parseInt(Math.random() * 100) % src.length]
+  }
+  this.paint = function() {
+    context.drawImage(this.img, this.x, this.y, this.size, this.size)
+  };
+  this.step = function() {
+    if (this.y < -this.size || this.x < -this.size || this.x > canvas.width) {
+        this.reset();
+    }
+    if (isStart || this.y + this.size < canvas.height) {
+      this.y -= this.yOffset;
+      this.x += -0.4 + this.xOffset;
+    }
+
+
+  }
+}
+var circles = [];
+
+function createCircles() {
+  for (var i = 0; i < objectCount; i++) {
+    var circle = new Circle();
+    circles.push(circle)
+  }
+}
+
+function paintCircles() {
+  for (var i = 0; i < circles.length; i++) {
+    circles[i].paint()
+  }
+}
+
+function startUp() {
+  isStart = true;
+}
+
+function stopUp() {
+  isStart = false;
+}
+
+function stepCircles() {
+  for (var i = 0; i < circles.length; i++) {
+    circles[i].step()
+  }
+}
+
+function initUp() {
+  for (var i = 0; i < src.length; i++) {
+    new Image().src = src[i];
+  }
+  context.fillStyle = "#fff";
+  createCircles();
+  setInterval(function() {
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    paintCircles();
+    stepCircles()
+  }, 10)
+}
