@@ -104,18 +104,6 @@
 <script type="text/javascript">
   var pauseImgUrl = "url('http://t.cn/RdK7lxu')";
   var playImgUrl = "url('http://t.cn/RdK7BcC')";
-  window.onload = function() {
-    initUp();
-    var audio = document.getElementById('audio');
-    audio.onplay = function() {
-      startUp();
-      app.playSrc = pauseImgUrl;
-    }
-    audio.onpause = function() {
-      stopUp();
-      app.playSrc = playImgUrl;
-    }
-  }
   var app = new Vue({
     el: '#app',
     methods: {
@@ -134,6 +122,17 @@
       playSrc: playImgUrl,
     }
   });
+
+  var audio = document.getElementById('audio');
+  audio.onplay = function() {
+    startUp();
+    app.playSrc = pauseImgUrl;
+  }
+  audio.onpause = function() {
+    stopUp();
+    app.playSrc = playImgUrl;
+  }
+  initUp();
 </script>
 
 </html>
